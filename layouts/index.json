@@ -1,0 +1,6 @@
+var sitePageList = [{{ range $i, $e := .Site.Pages }}{{ if $i }}, {{ end }}
+  {
+    "title": {{ .Title | jsonify }},
+    "url": "{{ .Permalink }}"
+  }{{ end }}
+]

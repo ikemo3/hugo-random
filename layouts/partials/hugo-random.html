@@ -1,2 +1,5 @@
-<script src="{{ "index.json" | relURL }}"></script>
-<script src="{{ "js/hugo-random.js" | relURL }}"></script>
+{{- $pagelistTemplate := resources.Get "template/pagelist.json" }}
+{{- $pagelist := $pagelistTemplate | resources.ExecuteAsTemplate "pagelist.json" . | fingerprint }}
+<script src="{{ $pagelist.RelPermalink }}"></script>
+{{- $randomjs := resources.Get "js/hugo-random.js" | fingerprint }}
+<script src="{{ $randomjs.RelPermalink }}"></script>
